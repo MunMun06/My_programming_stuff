@@ -1,6 +1,6 @@
 [submodule "perfmon-tui"]
 	path = perfmon-tui
 	url = git@github.com:MunMun06/perfmon-tui.git
-[submodule "food-diary"]
+[submodule "web_dev/food-diary"]
 	path = web_dev/food-diary
 	url = git@github.com:MunMun06/food-diary.git
