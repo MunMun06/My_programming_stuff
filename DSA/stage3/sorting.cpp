@@ -324,12 +324,12 @@ int main() {
   }
   std::cout << "\n";
 
-  int arr5[] = {5, 1, 4, 2, 8, 14, 15, 6, 3};
+  int arr5[] = {13, 26, 49, 96, 14, 36, 88, 63, 44, 56, 82};
   int n2 = sizeof(arr5) / sizeof(arr5[0]);
 
   quickSort(arr5, 0, n2 - 1);
 
-  std::cout << "quickSort output: ";
+  std::cout << "quickSort output (The one i actually wanted): ";
 
   for (int i = 0; i < n2; i++)
     std::cout << arr5[i] << " ";
