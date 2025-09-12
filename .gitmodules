@@ -4,3 +4,6 @@
 [submodule "web_dev/food-diary"]
 	path = web_dev/food-diary
 	url = git@github.com:MunMun06/food-diary.git
+[submodule "lean4/math/natural_number_game_lean4"]
+	path = lean4/math/natural_number_game_lean4
+	url = git@github.com:MunMun06/natural_number_game_lean4.git
