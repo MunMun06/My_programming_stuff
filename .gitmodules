@@ -7,3 +7,6 @@
 [submodule "lean4/math/natural_number_game_lean4"]
 	path = lean4/math/natural_number_game_lean4
 	url = git@github.com:MunMun06/natural_number_game_lean4.git
+[submodule "web_dev/6809616870_MyShop"]
+	path = web_dev/6809616870_MyShop
+	url = git@github.com:MunMun06/6809616870_Myshop.git
