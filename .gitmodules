@@ -10,3 +10,6 @@
 [submodule "web_dev/6809616870_MyShop"]
 	path = web_dev/6809616870_MyShop
 	url = git@github.com:MunMun06/6809616870_Myshop.git
+[submodule "lean4/math/GlimpseOfLean"]
+	path = lean4/math/GlimpseOfLean
+	url = git@github.com:MunMun06/GlimpseOfLean.git
