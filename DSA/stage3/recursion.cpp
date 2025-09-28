@@ -50,6 +50,11 @@ void towerOfHanoi(int n, char from, char to, char aux) {
   towerOfHanoi(n - 1, aux, to, from); // move n-1 disks to destination
 }
 
+// base case
+// choice
+// constraint
+// backtrack
+
 void generateSubsets(std::vector<int> &nums, int index,
                      std::vector<int> &current) {
   if (index == nums.size()) {
@@ -62,16 +67,17 @@ void generateSubsets(std::vector<int> &nums, int index,
     return;
   }
 
-  // Exclude nums[index]
+  // Exclude nums[index] because no push_back
   generateSubsets(nums, index + 1, current);
 
   // Include nums[index]
   current.push_back(nums[index]);
   generateSubsets(nums, index + 1, current);
 
-  // Backtrack (undo the choice)
+  // Backtrack (undo the choice) works because we always exclude before include
   current.pop_back();
 }
+
 void generatePermutations(std::vector<int> &nums, int start) {
   if (start == nums.size()) {
     for (int x : nums)
@@ -81,26 +87,74 @@ void generatePermutations(std::vector<int> &nums, int start) {
   }
 
   for (int i = start; i < nums.size(); i++) {
-    std::swap(nums[start], nums[i]);       // choose
-    generatePermutations(nums, start + 1); // explore
-    std::swap(nums[start], nums[i]);       // backtrack
+    std::swap(nums[start], nums[i]); // choose. place num[i] at index
+    generatePermutations(nums,
+                         start + 1); // explore. recurse for the next index
+    std::swap(nums[start], nums[i]); // backtrack. undo the swap
   }
 }
+
 void generateCombinations(std::vector<int> &nums, int k, int start,
                           std::vector<int> &current) {
   if (current.size() == k) {
     for (int x : current)
       std::cout << x << " ";
     std::cout << "\n";
-    return;
+    return; // print when size = k
   }
 
   for (int i = start; i < nums.size(); i++) {
-    current.push_back(nums[i]);                    // choose
-    generateCombinations(nums, k, i + 1, current); // explore
-    current.pop_back();                            // backtrack
+    current.push_back(nums[i]); // choose nums[i] as first element
+    generateCombinations(nums, k, i + 1, current); // recurse with next index
+    current.pop_back(); // pop the last element to backtrack
   }
 }
+
+bool isSafe(const std::vector<std::string> &board, int row, int col, int n) {
+  // Check column
+  for (int i = 0; i < row; i++) {
+    if (board[i][col] == 'Q')
+      return false;
+  }
+
+  // Check upper-left diagonal
+  for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+    if (board[i][j] == 'Q')
+      return false;
+  }
+
+  // Check upper-right diagonal
+  for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+    if (board[i][j] == 'Q')
+      return false;
+  }
+
+  return true;
+}
+
+void solve(int row, int n, std::vector<std::string> &board,
+           std::vector<std::vector<std::string>> &solutions) {
+  if (row == n) {
+    solutions.push_back(board); // Found a solution
+    return;
+  }
+
+  for (int col = 0; col < n; col++) {
+    if (isSafe(board, row, col, n)) {
+      board[row][col] = 'Q'; // Place queen
+      solve(row + 1, n, board, solutions);
+      board[row][col] = '.'; // Backtrack
+    }
+  }
+}
+
+std::vector<std::vector<std::string>> solveNQueens(int n) {
+  std::vector<std::vector<std::string>> solutions;
+  std::vector<std::string> board(n, std::string(n, '.')); // empty board
+  solve(0, n, board, solutions);
+  return solutions;
+}
+
 int main() {
 
   int n = 3;                      // number of disks
@@ -117,6 +171,16 @@ int main() {
   std::vector<int> current2;
   int k = 2;
   generateCombinations(nums3, k, 0, current);
+
+  int n2 = 5; // Example: 4-Queens
+  auto solutions = solveNQueens(n2);
+
+  for (const auto &board : solutions) {
+    for (const auto &row : board) {
+      std::cout << row << "\n";
+    }
+    std::cout << "----\n";
+  }
 
   return 0;
 }
