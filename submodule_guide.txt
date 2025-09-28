@@ -5,7 +5,11 @@ adding new submodule
   git push
 
 updating submodule
-  
+ 
+  go into the submodule and do git add, commit, push 
+
+  then go into the parent module 
+
   git add path/location
   git commit
   git push
