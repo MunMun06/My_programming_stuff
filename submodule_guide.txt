@@ -1,0 +1,11 @@
+adding new submodule
+
+  git submodule add https/link/to/submodule path/location
+  git commit
+  git push
+
+updating submodule
+  
+  git add path/location
+  git commit
+  git push
