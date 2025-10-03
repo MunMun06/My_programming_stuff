@@ -33,9 +33,8 @@ unsigned long long nth_term_pi_newtons(int n) {
 
 long double nth_term_e(int n) {
   long double result = 0;
-  long double one = 1;
   for (int i = 0; i < n; i++) {
-    result += one / (factorial(i));
+    result += 1.0 / (factorial(i));
   }
   return result;
 }
@@ -48,6 +47,8 @@ int main() {
   std::cout << "Please enter the amount of iteration for e: ";
   std::cin >> num_e;
   std::cout << '\n';
+
+  std::cout.precision(15);
 
   e = nth_term_e(num_e);
 
