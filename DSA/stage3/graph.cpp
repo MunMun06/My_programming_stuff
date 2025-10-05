@@ -99,6 +99,49 @@ void bfsShortestPath(const std::vector<std::vector<int>> &adj, int src) {
       std::cout << i << " : " << dist[i] << "\n";
   }
 }
+void bfsShortestPathReconstruct(const std::vector<std::vector<int>>& adj, int src, int dest) {
+    int n = adj.size();
+    std::vector<int> dist(n, INT_MAX);
+    std::vector<int> parent(n, -1); // to reconstruct path
+    std::queue<int> q;
+
+    dist[src] = 0;
+    q.push(src);
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+
+        for (int neighbor : adj[node]) {
+            if (dist[neighbor] == INT_MAX) { // not visited yet
+                dist[neighbor] = dist[node] + 1;
+                parent[neighbor] = node;   // remember how we got here
+                q.push(neighbor);
+            }
+        }
+    }
+
+    // If destination unreachable
+    if (dist[dest] == INT_MAX) {
+        std::cout << "No path exists from " << src << " to " << dest << "\n";
+        return;
+    }
+
+    // Reconstruct path
+    std::vector<int> path;
+    for (int at = dest; at != -1; at = parent[at]) {
+        path.push_back(at);
+    }
+    std::reverse(path.begin(), path.end());
+
+    // Output
+    std::cout << "Shortest distance: " << dist[dest] << "\n";
+    std::cout << "Path: ";
+    for (int node : path) {
+        std::cout << node << " ";
+    }
+    std::cout << "\n";
+}
 
 int main() {
   int V = 4; // number of vertices
@@ -136,5 +179,18 @@ int main() {
   adj3[1].push_back(3);
 
   BFS(0, adj3);
+
+  int V4 = 6;
+    std::vector<std::vector<int>> adj4(V4);
+
+    // Example graph
+    adj4[0] = {1, 2};
+    adj4[1] = {0, 3, 4};
+    adj4[2] = {0, 4};
+    adj4[3] = {1, 5};
+    adj4[4] = {1, 2, 5};
+    adj4[5] = {3, 4};
+
+    bfsShortestPathReconstruct(adj4, 0, 5);
   return 0;
 }
