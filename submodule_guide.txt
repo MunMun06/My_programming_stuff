@@ -13,3 +13,12 @@ updating submodule
   git add path/location
   git commit
   git push
+
+when pulling 
+
+	git pull
+
+	git submodule update --init --recursive 
+		if new submodule
+	git submodule update --remote --merge
+		if submodule already exist
