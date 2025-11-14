@@ -1,0 +1,5 @@
+SumOfLoves
+  idk how to scanf and ignore spaces
+
+learn string.h
+

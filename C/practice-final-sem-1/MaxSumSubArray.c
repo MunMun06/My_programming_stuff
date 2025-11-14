@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int my_max(int a, int b) { return a * (a > b) + b * (b > a); }
+int my_max(int a, int b) { return a * (a >= b) + b * (b > a); }
 
 int main() {
 
