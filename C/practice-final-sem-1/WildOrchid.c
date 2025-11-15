@@ -15,16 +15,16 @@ int my_char(char a) { return ((int)a - 64); }
 
 int main() {
 
-  char input[1000];
-  int i, j, n, max = 0, val[27] = {0}, sum[13] = {0}, month;
+  char input[1000] = {'_'};
+  int i, j, n, max = 0, val[256] = {0}, sum[13] = {0}, month;
 
   scanf("%s", input);
 
   n = strlen(input);
   month = hex(input[0]);
 
-  for (i = 0; i < n; i += 2) {
-    if (month == input[i]) {
+  for (i = 0; i <= n; i += 2) {
+    if (month == hex(input[i])) {
       val[my_char(input[i + 1])] = 1;
     } else {
       for (j = 1; j < 27; j++) {
