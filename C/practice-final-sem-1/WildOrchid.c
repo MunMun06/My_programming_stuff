@@ -8,8 +8,6 @@ int hex(char a) {
     return ((int)a - 48);
   } else {
     return ((int)a - 55);
-  }
-}
 
 int my_char(char a) { return ((int)a - 64); }
 
