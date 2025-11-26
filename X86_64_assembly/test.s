@@ -5,7 +5,7 @@
 	.section	.rodata
 	.align 8
 .LC0:
-	.string	"hello world, this is Raphael. Powered by arch linux "
+	.string	"Hello world. This is Raphael, Powered by arch linux.\n"
 #NO_APP
 	.text
 	.globl	main
@@ -30,5 +30,5 @@ main:
 	.cfi_endproc
 .LFE1984:
 	.size	main, .-main
-	.ident	"GCC: (GNU) 15.1.1 20250425"
+	.ident	"GCC: (GNU) 15.2.1 20251112"
 	.section	.note.GNU-stack,"",@progbits
