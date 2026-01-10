@@ -10,10 +10,17 @@ namespace fs = std::filesystem;
 // Configuration: 4 hours threshold (14400 seconds)
 const int FETCH_THRESHOLD = 14400;
 
-bool is_git_repo() { return fs::exists(".git"); }
+struct Duration {
+  long long h, m, s;
+};
+
+Duration get_duration(long long total_seconds) {
+  return {total_seconds / 3600, (total_seconds % 3600) / 60,
+          total_seconds % 60};
+}
 
 void check_upstream() {
-  // Check if local branch is behind upstream
+  // Redirect stderr to null to avoid seeing errors if no upstream is set
   int status = std::system(
       "git rev-list --count HEAD..@{u} > .git_behind_count 2>/dev/null");
 
@@ -24,39 +31,51 @@ void check_upstream() {
         << "\033[1;33m[!] Pull available:\033[0m Your branch is behind by "
         << count << " commit(s).\n";
   }
+  file.close();
   fs::remove(".git_behind_count");
 }
 
-void check_last_fetch() {
+int main() {
+  if (!fs::exists(".git"))
+    return 0;
+
   std::string timestamp_file = ".git/last_fetch_check";
   long long now =
       std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+  long long last_time = now;
 
   if (fs::exists(timestamp_file)) {
     std::ifstream file(timestamp_file);
-    long long last_time;
     file >> last_time;
+    file.close();
 
-    if (now - last_time > FETCH_THRESHOLD) {
-      std::cout << "\033[1;36m[i] Reminder:\033[0m It has been a while since "
-                   "your last fetch. Run 'git fetch'!\n";
-      // Update timestamp
-      std::ofstream out(timestamp_file);
-      out << now;
+    long long diff = now - last_time;
+    Duration d = get_duration(diff);
+
+    if (diff > FETCH_THRESHOLD) {
+      std::cout << "\033[1;31m[!] It has been " << d.h << "h " << d.m << "m "
+                << d.s << "s since your last git fetch.\033[0m\n";
+      std::cout << "Run git fetch now? [y/n]: ";
+      char response;
+      std::cin >> response;
+      if (response == 'y' || response == 'Y') {
+        std::system("git fetch");
+        // Update timestamp after successful fetch
+        std::ofstream out(timestamp_file);
+        out << std::chrono::system_clock::to_time_t(
+            std::chrono::system_clock::now());
+        out.close();
+      }
+    } else {
+      std::cout << "\033[1;32m[i]\033[0m " << d.h << "h " << d.m << "m " << d.s
+                << "s since your last git fetch.\n";
     }
   } else {
-    // First time running in this repo
+    // Initialize for new repo
     std::ofstream out(timestamp_file);
     out << now;
   }
-}
 
-int main() {
-  if (!is_git_repo())
-    return 0;
-
-  check_last_fetch();
   check_upstream();
-
   return 0;
 }
