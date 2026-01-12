@@ -3,8 +3,8 @@ import java.util.Scanner;
 /**
  * scanner
  */
-public class scanner {
-  public static void main(String[] args) {
+public class scanner { // class~
+  public static void main(String[] args) { // main~
     // use scanner to get user input
 
     Scanner scanner = new Scanner(System.in);
@@ -21,6 +21,14 @@ public class scanner {
     System.out.print("Are you a student (true/false): ");
     boolean isStudent = scanner.nextBoolean();
 
+    System.out.print("69 - 2 = ");
+    int sixseven = scanner.nextInt();
+    scanner.nextLine(); // to consume the newline
+    // if not food will be the newline
+
+    System.out.print("Whats your favorite food : ");
+    String food = scanner.nextLine();
+
     System.out.println("Your name is " + name);
     System.out.println("Your age is " + age + " years old");
     System.out.println("Your gpa is " + gpa);
@@ -29,6 +37,8 @@ public class scanner {
     } else {
       System.out.println("you are not a student");
     }
+    System.out.println("69 - 2 = " + sixseven);
+    System.out.println("your favorite food is " + food);
     scanner.close();
   }
 }
