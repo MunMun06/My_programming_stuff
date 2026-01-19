@@ -1,0 +1,31 @@
+level 0 
+  password is in readme 
+ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+level 1 
+  dashed filename required a path. full or relative are fine 
+263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+
+level 2
+  's s s s' -> s\ s\ s\ s 
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+
+level 3 
+  hidden file in the directory
+2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
+level 4 
+  use file to find human readable files 
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+level 5 
+
+find . -type f -size 1033c -exec file {} + | grep "ASCII text"
+find . -type f -size 1033c ! -executable -exec file {} + | grep "ASCII text"
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+level 6 
+
+ls -oR 2>/dev/null | grep bandit7    to find things that are owned by bandit7 
+find -name "bandit7" 2>/dev/null    2>/dev/null to redirect all permission denied to null  
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
