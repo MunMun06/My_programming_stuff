@@ -1,0 +1,35 @@
+Things to know 
+	session
+		like saves in game
+	window
+		like workspaces
+	pane
+		spliting into multiple pages
+
+open default session [0]
+tmux 
+
+create new session named [name]
+tmux new -s name
+
+attach the last session
+tmux a
+
+attach a specific session
+tmux a -t session_name
+
+list all session
+tmux ls
+
+kill last session
+tmux kill-session
+
+kill a specific session
+tmux kill-session -t session_name
+
+
+crtl+b is like normal mode in vim
+
+notation
+<c-b> (key to press)
+
