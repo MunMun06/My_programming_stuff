@@ -1,4 +1,9 @@
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+
+password: bandit0
+
 level 0 
+  ls cd cat file du find 
   password is in readme 
 ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 
@@ -16,16 +21,47 @@ level 3
 
 level 4 
   use file to find human readable files 
+  file ./* | grep text    // CHEATING
 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
 
 level 5 
 
-find . -type f -size 1033c -exec file {} + | grep "ASCII text"
+find . -type f -size 1033c -exec file {} + | grep "ASCII text" // CHEATING
 find . -type f -size 1033c ! -executable -exec file {} + | grep "ASCII text"
 HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
 
 level 6 
-
+  grep 
 ls -oR 2>/dev/null | grep bandit7    to find things that are owned by bandit7 
-find -name "bandit7" 2>/dev/null    2>/dev/null to redirect all permission denied to null  
+find -name "bandit7*" 2>/dev/null    2>/dev/null to redirect all permission denied to null  
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+  c for bytes. k,M,G is obvious
 morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+level 7 
+  man,sort,uniq,strings,base64,tr,tar,gzip,bzip2,xxd
+  cat data.txt | grep millionth
+dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+level 8 
+  sort data.txt | uniq -u 
+  sort in alphabetical order
+  uniq only works for adjacent lines. -u print unique line
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+level 9 
+  strings data.txt | grep =
+FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+level 10
+  base64 -d data.txt 
+dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+level 11 
+  tr (translate)
+  cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+level 12
+  mv cp mkdir
+
