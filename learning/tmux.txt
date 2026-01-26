@@ -17,6 +17,8 @@ general things
   <c-b> : enter command mode 
 
 copy mode 
+  <c-b> [ enter copy mode 
+    q  leave copy mode 
   mostly vi keys 
 
 
