@@ -60,6 +60,7 @@ dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
 level 11 
   tr (translate)
   cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+  translate ROT13
 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
 
 level 12
