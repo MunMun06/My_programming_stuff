@@ -64,4 +64,20 @@ level 11
 
 level 12
   mv cp mkdir
+  xxd -r data.txt recovered.txt   // recover original file
 
+  use file to find the metadata on the first line
+    first time use cat, every other time use xxd -d file.txt | head
+
+  .gz
+    1f8b08
+    add .gz to the filename
+    gzip -d recovered.txt.gz
+  .bz2
+    425a68
+    add .bz2 to the filename
+    bzip2 -d recovered.txt.bz2
+  tar
+    filename like data.bin5
+    tar -xf data.bin5.tar
+cbaIiH0h8J2eUks2vdTDwAn
