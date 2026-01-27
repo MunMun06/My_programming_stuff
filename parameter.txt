@@ -1,0 +1,3 @@
+parameter is in the function declaration (or definition)
+
+argument is the value when the function is called
