@@ -15,6 +15,7 @@ vim grammar      command count motion
 
   motion
   hjkl
+    J to bring the line below to the current line 
   w
   b
 
@@ -60,14 +61,18 @@ vertical
 
 a paragraph is any contiguous non-white space 
 
-  zz center your view 
+  zz center your view by moving viewport
+  M center your view by moving cursor
   :x jump to line x 
+  xG jump to line x 
 
   motion
   { go up by a paragraph
   } go down by a paragraph 
   ctrl + d  move down half a page 
   ctrl + u  move up half a page 
+  ctrl + b  move down a page
+  ctrl + f  move up a page
   G to go to the bottom of the file 
   gg to go to the top of the file 
 
@@ -76,3 +81,39 @@ a paragraph is any contiguous non-white space
   ? inverted search (n go backward, N go forward)
   * to search the word your cursor is on as a / 
   # to search the word your cursor is on as a ? 
+  % move to the matching bracket (works for all bracket ()[]{})
+
+changes command 
+  c 
+
+
+vim macro 
+  record vim action in a register that can be replay later
+
+  qa    record in a 
+  q     again to stop recording 
+  @a    replay macro in a 
+  x@a   replay macro in a x times 
+
+vim marks 
+  bookmark a specific location in a file
+  a mark go to a specific register for each letter (a-z A-Z so max 52 marks) 
+
+  uppercase is global, lowercase is local
+
+  ma    set mark a at current cursor location 
+  'a    jump to line of mark a 
+  `a    jump to mark a 
+  d'a   delete from current line to line of mark a 
+  d`a   delete from current position to mark a 
+  c'a   change text from current line to line of mark a 
+  y`a   yank from cursor to mark a 
+
+  :marks          list all current marks 
+  :marks aB       list marks a,B
+  :delmarks a     delete mark a 
+  :delmarks a-z   delete marks from a to z 
+  :delmarks!      delete all marks 
+  
+
+vim regex 
