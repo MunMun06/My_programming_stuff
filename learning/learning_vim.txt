@@ -19,6 +19,10 @@ vim grammar      command count motion
   w
   b
 
+  normal mode 
+    main mode, default mode, navigation mode 
+    .  to replay your vim action in normal mode 
+
   insert mode
     i left side insert mode 
     a right side insert mode 
@@ -33,6 +37,12 @@ vim grammar      command count motion
 
   yy yank a line 
   dd delete a line 
+
+files
+  :w  save 
+  :q  quit 
+  :wq or :x  save and quit 
+  :w new_file_name  save and replace file name
 
 horizontal 
 
@@ -83,10 +93,16 @@ a paragraph is any contiguous non-white space
   # to search the word your cursor is on as a ? 
   % move to the matching bracket (works for all bracket ()[]{})
 
-s command
+word object 
+
+s command (quite useless i think)
   dont reallly know its use case 
   literally s is cl or xi
   S is cc
+
+replace command 
+  replace and you're still in normal mode
+
 
 changes command 
   delete things and put you in insert mode
@@ -109,6 +125,7 @@ lsdjfksjdlfjls
 
 vim macro 
   record vim action in a register that can be replay later
+    qA go to register a 
 
   qa    record in a 
   q     again to stop recording 
@@ -116,6 +133,7 @@ vim macro
   x@a   replay macro in a x times 
   @@    replay last macro
   :%normal @a  replay macro a at every line
+  :set lazyredraw  make macro faster by not redrawing the screen till the macro is done
 
 vim marks 
   bookmark a specific location in a file
@@ -163,10 +181,10 @@ regex
   |     alternate, OR
     \v(foo|bar)   matches foo or bar
   {m,n} ranges
-    \v\d{3)     matches exactly 3 digits
+    \v\d{3)     matches exactly 3 digits (123)
     \v\d{2,4)   matches 2 - 4 digits (12 123 1234)
-    \v\d{3,)    matches 3 or more
-    \v\d{,3)    matches up to 3
+    \v\d{3,)    matches 3 or more (123 1234 12345 ...)
+    \v\d{,3)    matches up to 3 (1 12 123)
     \vab{,3)    matches ab abb abbb
     \v(ab){,3)  matches ab abab ababab
 
@@ -192,9 +210,9 @@ regex
   \l\1     lowercase first leter
   \L\1     lowercase the entire group
   \E       stop \u \U \l \L and continue replacing
-    :%s/\v(w+)/\L\1\E done/   replace wORd with word done
+    :%s/\v(w+)/\L\1\E done/   replace "wORd" with "word done"
 
-    :s/\v(w+)/\u\1/g    capitalize every words
+    :%s/\v(w+)/\u\1/g    capitalize every words
 
   context
     \zs  start matching here
