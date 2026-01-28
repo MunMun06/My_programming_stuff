@@ -83,9 +83,29 @@ a paragraph is any contiguous non-white space
   # to search the word your cursor is on as a ? 
   % move to the matching bracket (works for all bracket ()[]{})
 
-changes command 
-  c 
+s command
+  dont reallly know its use case 
+  literally s is cl or xi
+  S is cc
 
+changes command 
+  delete things and put you in insert mode
+    the deleted text goes into register
+  c{motion} 
+  cw   change from here to whitespace
+  c$   change to end of line
+  c0   change to line beginning
+  ct;  change till ; not including
+  cf;  change till ; including
+  cc   change entire line
+  2cc  change 2 lines
+  
+  ciw  change this word 
+  caw  change word (include space)
+  ci"  change inside ""
+  ci(  change inside ()
+  
+lsdjfksjdlfjls
 
 vim macro 
   record vim action in a register that can be replay later
@@ -94,6 +114,8 @@ vim macro
   q     again to stop recording 
   @a    replay macro in a 
   x@a   replay macro in a x times 
+  @@    replay last macro
+  :%normal @a  replay macro a at every line
 
 vim marks 
   bookmark a specific location in a file
@@ -115,5 +137,72 @@ vim marks
   :delmarks a-z   delete marks from a to z 
   :delmarks!      delete all marks 
   
+regex 
+  /\v  or ?\v to search with very magic mode
 
-vim regex 
+  :[range]s/find/replace/flag(s)
+  :[range]s/\vfind/replace/flag(s)  to use very magic mode
+    very magic only changes find behavior not replace
+
+  in very magic. things are special by default
+    get the literal by escaping 
+    ex. /\v\/home\/*   matches /home/*
+
+  strings types
+  .     everything
+  /d    digits
+  /w    words
+  /s    whitespaces
+
+  matching amounts
+  *     0 or more
+  +     1 or more
+  ?     0 or 1
+
+  ()    group 
+  |     alternate, OR
+    \v(foo|bar)   matches foo or bar
+  {m,n} ranges
+    \v\d{3)     matches exactly 3 digits
+    \v\d{2,4)   matches 2 - 4 digits (12 123 1234)
+    \v\d{3,)    matches 3 or more
+    \v\d{,3)    matches up to 3
+    \vab{,3)    matches ab abb abbb
+    \v(ab){,3)  matches ab abab ababab
+
+  :s/foo/bar/    replace first foo in the current line
+  :%s/foo/bar/   replace all foo in the line
+  :%s/foo/bar/g  replace all foo in the file
+
+  flags
+  g    global
+  i    ignore case
+  I    case sensitive
+  c    confirm replacing for every match
+  n    count matches that would happen (dont replace)
+
+  modifying replace 
+    capture group to reuse 
+    :s/\v(\w+)\s+(\w+)/\2 \1/  swap adjacent words
+
+  &,\0     everything that matches 
+  \1,\2    captured group
+  \u\1     capitalize first leter
+  \U\1     capitalize the entire group
+  \l\1     lowercase first leter
+  \L\1     lowercase the entire group
+  \E       stop \u \U \l \L and continue replacing
+    :%s/\v(w+)/\L\1\E done/   replace wORd with word done
+
+    :s/\v(w+)/\u\1/g    capitalize every words
+
+  context
+    \zs  start matching here
+      everything before this is context
+    \ze  end matching here
+      what comes after is context
+
+    :%s/\vfoo\zsbar/baz/    replace bar in foobar with baz
+    :%s/\vfoo\zsbar\zequx/baz  replace bar in foobarqux with baz
+
+
