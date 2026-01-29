@@ -93,6 +93,11 @@ a paragraph is any contiguous non-white space
   # to search the word your cursor is on as a ? 
   % move to the matching bracket (works for all bracket ()[]{})
 
+modifying value
+  <C-a> increment number
+  4<C-x> decrement number
+
+
 word object 
   i and a are word object modifier 
 
@@ -101,10 +106,11 @@ word object
   
   all of these are like motion when put after a command
 
-  iw / aw
-  is / as 
-  ip / ap
-  i" / a"
+  iw / aw  word
+  iW / aW  WORD
+  is / as  sentence
+  ip / ap  paragraph
+  i" / a"  quote
   i( / a(
   i[ / a[
   i{ / a{
