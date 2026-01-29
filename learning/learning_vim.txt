@@ -18,6 +18,7 @@ vim grammar      command count motion
     J to bring the line below to the current line 
   w
   b
+  e
 
   normal mode 
     main mode, default mode, navigation mode 
@@ -120,9 +121,14 @@ word object
   all of these are like motion when put after a command
 
   iw / aw  word
+    [a-zA-z0-9_]+ stop at symbols and whitespace
   iW / aW  WORD
+    string of non-whitespace characters
   is / as  sentence
+    WORD stop at . ! ?
+    ( )   move between sentences
   ip / ap  paragraph
+    strings separated by atleast one blank line
   i" / a"  quote
   i( / a(
   i[ / a[
@@ -219,12 +225,12 @@ regex
   |     alternate, OR
     \v(foo|bar)   matches foo or bar
   {m,n} ranges
-    \v\d{3)     matches exactly 3 digits (123)
-    \v\d{2,4)   matches 2 - 4 digits (12 123 1234)
+    \v\d{3}     matches exactly 3 digits (12}
+    \v\d{2,4}   matches 2 - 4 digits (12 123 123}
     \v\d{3,)    matches 3 or more (123 1234 12345 ...)
-    \v\d{,3)    matches up to 3 (1 12 123)
-    \vab{,3)    matches ab abb abbb
-    \v(ab){,3)  matches ab abab ababab
+    \v\d{,3}    matches up to 3 (1 12 12}
+    \vab{,3}    matches ab abb abbb
+    \v(ab){,3}  matches ab abab ababab
 
   :s/foo/bar/    replace first foo in the current line
   :%s/foo/bar/   replace all foo in the line
