@@ -93,10 +93,23 @@ a paragraph is any contiguous non-white space
   # to search the word your cursor is on as a ? 
   % move to the matching bracket (works for all bracket ()[]{})
 
-modifying value
-  <C-a> increment number
-  4<C-x> decrement number
+modifying number
+  works with decimal octal hexadecimal binary
+  <C-a> increment 
+  4<C-x> decrement
 
+modifying letter
+  2~   toggle case
+  U   uppercase
+  u   lowercase
+
+fddDFjdsfSDf
+
+  gu{motion} / gU{motion} / g~{motion}  to change cases
+
+  guw   make from the cursor to the word ending lowercase
+  gUiw  make the current WORD uppercase
+  g~iw  toggle this word
 
 word object 
   i and a are word object modifier 
@@ -128,7 +141,6 @@ replace command
 
   rx
   3rx
-
 
 changes command 
   delete things and put you in insert mode
