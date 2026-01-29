@@ -94,6 +94,23 @@ a paragraph is any contiguous non-white space
   % move to the matching bracket (works for all bracket ()[]{})
 
 word object 
+  i and a are word object modifier 
+
+  i mean the thing
+  a mean the thing and its surrounding
+  
+  all of these are like motion when put after a command
+
+  iw / aw
+  is / as 
+  ip / ap
+  i" / a"
+  i( / a(
+  i[ / a[
+  i{ / a{
+
+  ciw caw
+  diw daw
 
 s command (quite useless i think)
   dont reallly know its use case 
@@ -102,6 +119,9 @@ s command (quite useless i think)
 
 replace command 
   replace and you're still in normal mode
+
+  rx
+  3rx
 
 
 changes command 
