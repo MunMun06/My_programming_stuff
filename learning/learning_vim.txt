@@ -45,6 +45,17 @@ files
   :wq or :x  save and quit 
   :w new_file_name  save and replace file name
 
+buffer, tab and window
+  buffer are file loaded in vim/nvim
+  window is like pane in tmux
+  tab (like in web browser) is a collection of window
+
+  window 
+    <C-w> hjkl  move between window
+    <C-w> q  close window
+
+  
+
 horizontal 
 
   motion 
