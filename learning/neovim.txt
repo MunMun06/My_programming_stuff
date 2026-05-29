@@ -38,3 +38,4 @@ Learn lua to some proficiency
 
 
 Want some collasping code blocks. Ctrl in insert mode to delete and move by word. Use the default selection for autocomplete option. neogit for git integration.
+  get the thick cursor permanently on neovim, no matter the mode.
