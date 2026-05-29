@@ -1,0 +1,2 @@
+username=arch_user69
+theme=dracula
