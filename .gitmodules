@@ -1,15 +1,15 @@
 [submodule "perfmon-tui"]
 	path = perfmon-tui
-	url = git@gitlab.com:munmun06/perfmon-tui.git
+	url = git@codeberg.org/munmun06/perfmon-tui.git
 [submodule "web_dev/food-diary"]
 	path = web_dev/food-diary
 	url = git@github.com:MunMun06/food-diary.git
 [submodule "lean4/math/natural_number_game_lean4"]
 	path = lean4/math/natural_number_game_lean4
-	url = git@gitlab.com:munmun06/natural-number-game-lean-4.git 
+	url = git@codeberg.org/munmun06/natural_number_game_lean4.git
 [submodule "web_dev/6809616870_MyShop"]
 	path = web_dev/6809616870_MyShop
 	url = git@github.com:MunMun06/6809616870_Myshop.git
 [submodule "lean4/math/GlimpseOfLean"]
 	path = lean4/math/GlimpseOfLean
-	url = git@gitlab.com:munmun06/glimpse-of-lean.git
+	url = git@codeberg.org/munmun06/GlimpseOfLean.git
